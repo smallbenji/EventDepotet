@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyB8hEUXvck8139nlNLbYQ46scK0wyBuUXw",
@@ -10,7 +10,10 @@ const firebaseConfig = {
 	appId: "1:671549658896:web:7ccd5a7c5d2cc5bcdcb795",
 	measurementId: "G-2F4VWDFKT2",
 };
-const app = initializeApp(firebaseConfig);
-const firestore = getFirestore(app);
 
-export { firestore };
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+console.log(db.collection("Products").count());
+
+export { db };
